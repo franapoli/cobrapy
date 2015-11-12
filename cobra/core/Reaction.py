@@ -643,7 +643,7 @@ class Reaction(Object):
                 met_id += compartment
                 try:
                     met = model.metabolites.get_by_id(met_id)
-                except KeyError:
+                except (KeyError, AttributeError):
                     if verbose:
                         print("unknown metabolite '%s' created" % met_id)
                     met = Metabolite(met_id)
