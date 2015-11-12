@@ -47,7 +47,7 @@ def parse_legacy_id(the_id, the_compartment=None, the_type='metabolite',
         the_id += '[%s]'%the_compartment
     return the_id
 def create_cobra_model_from_sbml_file(sbml_filename, old_sbml=False, legacy_metabolite=False,
-                                      print_time=False, use_hyphens=False):
+                                      print_time=False, use_hyphens=False, skip_boundary=True):
     """convert an SBML XML file into a cobra.Model object.  Supports
     SBML Level 2 Versions 1 and 4.  The function will detect if the SBML fbc package is used in the file
     and run the converter if the fbc package is used.
@@ -113,7 +113,8 @@ def create_cobra_model_from_sbml_file(sbml_filename, old_sbml=False, legacy_meta
     for sbml_metabolite in sbml_species:
         #Skip sbml boundary species
         if sbml_metabolite.getBoundaryCondition():
-            continue
+            if skip_boundary:
+                continue
 
         if (old_sbml or legacy_metabolite) and \
                sbml_metabolite.getId().endswith('_b'):
