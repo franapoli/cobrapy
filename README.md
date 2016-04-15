@@ -1,3 +1,15 @@
+
+About this fork
+===============
+This is a modified version used in the paper "In silico modelling of
+liver metabolism in a human disease reveals a key enzyme for histidine
+and histamine homeostasis", Cell Reports, 2016.
+
+This version mainly fixes a problem with importing metabolites from a
+"b" compartment (as opposed to consider them "boundary" metabolites).
+
+The original documentation follows.
+
 cobrapy
 =======
 [![Build Status](https://travis-ci.org/opencobra/cobrapy.svg?branch=master)](https://travis-ci.org/opencobra/cobrapy)
